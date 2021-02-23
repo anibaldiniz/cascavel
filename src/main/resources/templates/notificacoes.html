@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Gerenciamento de Notificações</title>
+
+    <link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+	
+</head>
+</head>
+
+<body>
+    
+    <div class="container my-2"> 
+        <h1>Notificações</h1>
+        <br/>
+        <table border="1" class="table table-striped table-responsive-md">
+            <thead>
+                <tr>
+                    <th> Id</th>
+                    <th> Email?</th>
+                    <th> Celular App?</th>
+                    <th> Celular Aplicativo Externo?</th>
+                    <th> Usuário que Recebeu</th>
+                    <th> Usuário que Enviou</th>
+                    <th> Data de Envio</th>
+                    <th> Mensagem</th>
+                    <th> Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="notificacao : ${ListaNotificacoes}">
+                    <td th:text="${notificacao.id}"></td>
+                    <td th:text="${notificacao.email}? 'Sim' : 'Não'"></td>
+                    <td th:text="${notificacao.celularApp}? 'Sim' : 'Não'"></td>
+                    <td th:text="${notificacao.celularAplicativoExterno}? 'Sim' : 'Não'"></td>
+                    <td th:text="${notificacao.usuarioRecebeu.nome}"></td>
+                    <td th:text="${notificacao.usuarioEnviou.nome}"></td>
+                    <td th:text="${notificacao.dataEnvio}"></td>
+                    <td th:text="${notificacao.mensagem}"></td>
+                    <th><a th:href = "@{/formAlterarNotificacao/{id}(id=${notificacao.id})}" class="btn btn-primary btn-sm mb-3"> Alterar </a>
+                        <a th:href = "@{/apagarNotificacao/{id}(id=${notificacao.id})}" class="btn btn-danger btn-sm mb-3"> Excluir </a>
+                    </tr>
+                </tbody>
+            </table>
+            <i class="fa fa-space-shuttle" aria-hidden="true"></i>
+            <br/>
+            <a th:href = "@{/formIncluirNotificacao}" class="btn btn-primary btn-sm mb-3"> Incluir notificação </a>
+            <br/>
+            
+            <a th:href = "@{/}"> Voltar</a>    
+    </div>
+
+
+</body>
+
+</html>

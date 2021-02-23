@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Employee Management System</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container">
+		<h1>Gerenciamento de Documentos</h1>
+		<hr>
+		<h2>Incluir documento</h2>
+
+		<form action="#" th:action="@{/incluirDocumento}" th:object="${documento}" method="POST">
+			<input type="text" th:field="*{extensao}" placeholder="Extensão do Documento" class="form-control mb-4 col-4">
+			<input type="text" th:field="*{mimeType}" placeholder="MimeType do Documento" class="form-control mb-4 col-4">
+			<input type="text" th:field="*{nome}" placeholder="Nome do Documento" class="form-control mb-4 col-4">
+			<input type="text" th:field="*{conteudo}" placeholder="Conteúdo do Documento" class="form-control mb-4 col-4">
+			<input type="text" th:field="*{dataInclusao}" placeholder="Data de Inclusão do Documento" class="form-control mb-4 col-4">
+			<input type="text" th:field="*{usuario}" placeholder="Usuário que Incluiu o Documento" class="form-control mb-4 col-4">
+			<input type="text" th:field="*{solicitacao}" placeholder="Solicitação que Incluiu o Documento" class="form-control mb-4 col-4">
+			<button type="submit" class="btn btn-info col-2"> Incluir</button>
+		</form>
+
+		<hr>
+
+		<a th:href="@{/documentos}"> Retorne para Lista de Documentos</a>
+	</div>
+</body>
+
+</html>

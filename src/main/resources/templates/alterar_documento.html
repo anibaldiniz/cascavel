@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Gerenciamento de Documentos</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="container">
+		<h1>Gerenciamento de Documentos</h1>
+		<hr>
+		<h2>Atualizar Documento</h2>
+
+		<form action="#" th:action="@{/incluirDocumento}" th:object="${documento}" method="POST">
+
+			<!-- Add hidden form field to handle update -->
+			<input type="hidden" th:field="*{id}" />
+
+			<select th:field="*{extensao}" class="form-control mb-4 col-4">
+				<option value="pdf">pdf</option>
+				<option value="rtf">rtf</option>
+				<option value="jpeg">jpeg</option>
+				<option value="png">png</option>
+			</select>
+			
+			<select th:field="*{mimeType}" class="form-control mb-4 col-4">
+				<option value="application/pdf">application/pdf</option>
+				<option value="application/rtf">application/rtf</option>
+				<option value="image/jpeg">image/jpeg</option>
+				<option value="image/png">image/png</option>
+			</select>
+			<!-- <input type="text" th:field="*{mimeType}" placeholder="MimeType" class="form-control mb-4 col-4"> -->
+			<input type="text" th:field="*{nome}" placeholder="Nome" class="form-control mb-4 col-4">
+
+			<div class="input-group mb-3">
+				<div class="custom-file">
+				  <input type="file" class="custom-file-input" id="inputGroupFile02">
+				  <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Escolha um arquivo para enviar</label>
+				</div>
+				<div class="input-group-append">
+				  <span class="input-group-text" id="inputGroupFileAddon02">Enviar</span>
+				</div>
+			  </div>
+
+			<input type="text" th:field="*{conteudo}" placeholder="Conteúdo" class="form-control mb-4 col-4">
+			<input type="text" th:field="*{dataInclusao}" placeholder="Data de inclusão"
+				class="form-control mb-4 col-4">
+			<input type="text" th:field="*{usuario}" placeholder="Quem incluiu" class="form-control mb-4 col-4">
+			<input type="text" th:field="*{solicitacao}" placeholder="Solicitacao que foi incluído o documento"
+				class="form-control mb-4 col-4">
+
+			<button type="submit" class="btn btn-info col-2"> Alterar</button>
+		</form>
+
+		<hr>
+
+		<a th:href="@{/documentos}"> Voltar</a>
+	</div>
+</body>
+
+</html>

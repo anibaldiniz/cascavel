@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Gerenciamento de Grupos</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+</head>
+
+<body>
+
+    <div class="container my-2">
+        <h1>Grupos</h1>
+        <br />
+        <table border="1" class="table table-striped table-responsive-md">
+            <thead>
+                <tr>
+                    <th> Id</th>
+                    <th> Nome</th>
+                    <th> Localização</th>
+                    <th> Ações</th>
+                    <th> Mais Dados</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="grupo : ${ListaGrupos}">
+                    <td th:text="${grupo.id}"></td>
+                    <td th:text="${grupo.nome}"></td>
+                    <th><a th:href="@{/formAlterarGrupo/{id}(id=${grupo.id})}" class="btn btn-primary btn-sm mb-3">
+                            Alterar </a>
+                        <a th:href="@{/apagarGrupo/{id}(id=${grupo.id})}" class="btn btn-danger btn-sm mb-3"> Excluir
+                        </a>
+                    </th>
+                    <th> <a th:href="@{/usuariosGrupo/{id}(id=${grupo.id})}" class="btn btn-info btn-sm mb-3"> Usuários
+                            do grupo </a>
+                        <a th:href="@{/usuariosResponsaveisGrupo/{id}(id=${grupo.id})}"
+                            class="btn btn-info btn-sm mb-3"> Usuários responsáveis </a>
+                    </th>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+        <i class="fa fa-space-shuttle" aria-hidden="true"></i>
+        <br />
+        <a th:href="@{/formIncluirGrupo}" class="btn btn-primary btn-sm mb-3"> Incluir grupo </a>
+        <br />
+
+        <a th:href="@{/}"> Voltar</a>
+    </div>
+
+
+</body>
+
+</html>

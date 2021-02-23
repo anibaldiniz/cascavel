@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Gerenciamento de Documentos</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+</head>
+
+<body>
+
+    <div class="container my-2">
+        <h1>Documentos</h1>
+        <br />
+        <table border="1" class="table table-striped table-responsive-md">
+            <thead>
+                <tr>
+                    <th> Id</th>
+                    <th> Nome</th>
+                    <th> Extensão</th>
+                    <th> MimeType</th>
+                    <th> Conteúdo</th>
+                    <th> Data da Inclusão</th>
+                    <th> Usuário que Incluiu</th>
+                    <th> Solicitação</th>
+                    <th> Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="documento : ${ListaDocumentos}">
+                    <td th:text="${documento.id}"></td>
+                    <td th:text="${documento.nome}"></td>
+                    <td th:text="${documento.extensao}"></td>
+                    <td th:text="${documento.mimeType}"></td>
+                    <td th:text="${documento.conteudo}"></td>
+                    <td th:text="${documento.dataInclusao}"></td>
+                    <td th:text="${documento.usuario}"></td>
+                    <td th:text="${documento.solicitacao}"></td>
+                    <th><a th:href="@{/formAlterarDocumento/{id}(id=${documento.id})}"
+                            class="btn btn-primary btn-sm mb-3"> Alterar </a>
+                        <a th:href="@{/apagarDocumento/{id}(id=${documento.id})}" class="btn btn-danger btn-sm mb-3">
+                            Excluir </a>
+                </tr>
+            </tbody>
+        </table>
+        <i class="fa fa-space-shuttle" aria-hidden="true"></i>
+        <br />
+        <a th:href="@{/formIncluirDocumento}" class="btn btn-primary btn-sm mb-3"> Incluir documento </a>
+        <br />
+
+        <a th:href="@{/}"> Voltar</a>
+    </div>
+
+
+</body>
+
+</html>

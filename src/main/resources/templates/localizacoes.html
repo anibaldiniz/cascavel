@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Gerenciamento de Localizações</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+</head>
+
+<body>
+
+    <div class="container my-2">
+        <h1>Localizações</h1>
+        <br />
+        <table border="1" class="table table-striped table-responsive-md">
+            <thead>
+                <tr>
+                    <th> Id</th>
+                    <th> Localização</th>
+                    <th> Latitude</th>
+                    <th> Longitude</th>
+                    <th> Altitude</th>
+                    <th> Ações</th>
+                    <th> Mais Dados</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="localizacao : ${ListaLocalizacoes}">
+                    <td th:text="${localizacao.id}"></td>
+                    <td th:text="${localizacao.localizacao}"></td>
+                    <td th:text="${localizacao.latitude}"></td>
+                    <td th:text="${localizacao.longitude}"></td>
+                    <td th:text="${localizacao.altitude}"></td>
+                    <th><a th:href="@{/formAlterarLocalizacao/{id}(id=${localizacao.id})}"
+                            class="btn btn-primary btn-sm mb-3"> Alterar </a>
+                        <a th:href="@{/apagarLocalizacao/{id}(id=${localizacao.id})}"
+                            class="btn btn-danger btn-sm mb-3"> Excluir </a>
+                    </th>
+                    <th>
+                        <a th:href="@{/usuariosNaLocalizacao/{id}(id=${localizacao.id})}"
+                            class="btn btn-info btn-sm mb-3"> Usuários </a>
+                        <a th:href="@{/unidadesNaLocalizacao/{id}(id=${localizacao.id})}"
+                            class="btn btn-info btn-sm mb-3"> Unidades </a>
+                        <a th:href="@{/gruposNaLocalizacao/{id}(id=${localizacao.id})}"
+                            class="btn btn-info btn-sm mb-3"> Grupos </a>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+        <i class="fa fa-space-shuttle" aria-hidden="true"></i>
+        <br />
+        <a th:href="@{/formIncluirLocalizacao}" class="btn btn-primary btn-sm mb-3"> Incluir localizacao </a>
+        <br />
+
+        <a th:href="@{/}"> Voltar</a>
+    </div>
+
+
+</body>
+
+</html>
