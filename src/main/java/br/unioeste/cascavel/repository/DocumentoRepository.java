@@ -19,4 +19,5 @@ public interface DocumentoRepository extends JpaRepository<Documento, Long> {
     
     @Query("Select a from Documento a where nome = ?1")
     Documento getByNome(String nomeArquivo);
+    
 }
