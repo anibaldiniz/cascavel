@@ -40,7 +40,7 @@
                     <td th:text="${notificacao.celularAplicativoExterno}? 'Sim' : 'Não'"></td>
                     <td th:text="${notificacao.usuarioRecebeu.nome}"></td>
                     <td th:text="${notificacao.usuarioEnviou.nome}"></td>
-                    <td th:text="${notificacao.dataEnvio}"></td>
+                    <td th:text="${#temporals.format(notificacao.dataEnvio, 'dd-MM-yyyy   HH:mm:ss')}"></td>
                     <td th:text="${notificacao.mensagem}"></td>
                     <th><a th:href = "@{/formAlterarNotificacao/{id}(id=${notificacao.id})}" class="btn btn-primary btn-sm mb-3"> Alterar </a>
                         <a th:href = "@{/apagarNotificacao/{id}(id=${notificacao.id})}" class="btn btn-danger btn-sm mb-3"> Excluir </a>

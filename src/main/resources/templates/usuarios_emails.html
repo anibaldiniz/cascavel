@@ -11,11 +11,12 @@
 	crossorigin="anonymous">
 	
 </head>
+</head>
 
 <body>
     
     <div class="container my-2"> 
-        <h1>Todos os Emails</h1>
+        <h1 th:text="|Emails do  usuario: ${usuario.nome}|"></h1>
         <br/>
         <table border="1" class="table table-striped table-responsive-md">
             <thead>
@@ -30,11 +31,15 @@
                     <td th:text="${email.email}"></td>
                     <td th:text="${email.usuarioEmails.nome}"></td>
                     <th>
+                        <!-- <a th:href = "@{/formAlterarEmail/{id}(id=${email.email})}" class="btn btn-primary btn-sm mb-3"> Alterar </a> -->
                         <a th:href = "@{/apagarEmail/{id}(id=${email.email})}" class="btn btn-danger btn-sm mb-3"> Excluir </a>
                     </th>
                 </tbody>
             </table>
-            
+            <i class="fa fa-space-shuttle" aria-hidden="true"></i>
+            <br/>
+            <a th:href = "@{/formIncluirEmail/{usuario_id}(usuario_id=${usuario.id})}" class="btn btn-primary btn-sm mb-3"> Incluir email </a>
+            <br/>
             
             <a th:href = "@{/}"> Voltar</a>    
     </div>

@@ -27,7 +27,7 @@ public class EmailsServiceImpl implements EmailsService {
     }
 
     @Override
-    public Email getEmailById(long id) {
+    public Email getEmailById(String id) {
         Optional<Email> opcional = emailRepository.findById(id);
         Email email = null;
         if (opcional.isPresent()) {
@@ -39,7 +39,7 @@ public class EmailsServiceImpl implements EmailsService {
     }
 
     @Override
-    public void apagarEmailById(long id) {
+    public void apagarEmailById(String id) {
         this.emailRepository.deleteById(id);
     }
 

@@ -37,7 +37,7 @@
                     <td th:text="${documento.extensao}"></td>
                     <td th:text="${documento.mimeType}"></td>
                     <td th:text="${documento.conteudo}"></td>
-                    <td th:text="${documento.dataInclusao}"></td>
+                    <td th:text="${#temporals.format(documento.dataInclusao, 'dd-MM-yyyy   HH:mm:ss')}"></td>
                     <td th:text="${documento.usuario}"></td>
                     <td th:text="${documento.solicitacao}"></td>
                     <th><a th:href="@{/formAlterarDocumento/{id}(id=${documento.id})}"

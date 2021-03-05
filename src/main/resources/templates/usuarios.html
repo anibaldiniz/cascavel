@@ -51,8 +51,9 @@
                     <td th:text="${usuario.lingua}"></td>
                     <td th:text="${usuario.estaAtivo}? 'Ativo' : 'Inativo'"></td></td>
                     <td th:text="${usuario.excluidoLdap}? 'Sim' : 'Não'"></td></td>
-                    <td th:text="${usuario.ultimaAlteracaoCadastro}"></td>
-                    <td th:text="${usuario.ultimoLogin}"></td>
+                    
+                    <td th:text="${#temporals.format(usuario.ultimaAlteracaoCadastro, 'dd-MM-yyyy   HH:mm:ss')}"></td>
+                    <td th:text="${#temporals.format(usuario.ultimoLogin, 'dd-MM-yyyy   HH:mm:ss')}"></td>
                     <th><a th:href = "@{/formAlterarUsuario/{id}(id=${usuario.id})}" class="btn btn-primary btn-sm mb-3"> Alterar </a>
                         <a th:href = "@{/apagarUsuario/{id}(id=${usuario.id})}" class="btn btn-danger btn-sm mb-3"> Excluir </a> </th>
                         <th>
@@ -60,6 +61,7 @@
                             <a th:href = "@{/telefonesUsuario/{id}(id=${usuario.id})}" class="btn btn-secondary btn-sm mb-3"> Telefones </a>
                             <a th:href = "@{/gruposUsuario/{id}(id=${usuario.id})}" class="btn btn-secondary btn-sm mb-3"> Grupos </a>
                             <a th:href = "@{/categoriasUsuario/{id}(id=${usuario.id})}" class="btn btn-secondary btn-sm mb-3"> Categorias </a>
+                            <a th:href = "@{/emailsUsuario/{id}(id=${usuario.id})}" class="btn btn-secondary btn-sm mb-3"> Emails </a>
                         </th>    
                 </tr>
             </tbody>

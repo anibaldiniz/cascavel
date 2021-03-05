@@ -1,0 +1,189 @@
+Array ( 
+  [objectclass] => 
+	 Array ( [count] => 4 
+	     [0] => top 
+		 [1] => person 
+		 [2] => organizationalPerson 
+		 [3] => user ) 
+	 [0] => objectclass 
+	   [cn] => Array ( [count] => 1 
+	             [0] => Vanderleia Luzia Stockmann Schmidt ) 
+	 [1] => cn 
+	   [sn] => Array ( [count] => 1 
+	             [0] => Luzia Stockmann Schmidt ) 
+	 [2] => sn 
+	   [givenname] => Array ( [count] => 1 
+	                   [0] => Vanderleia ) 
+	 [3] => givenname 
+	   [distinguishedname] => Array ( [count] => 1 
+	                           [0] => CN=Vanderleia Luzia Stockmann Schmidt,OU=Agentes Universitarios,OU=UNIOESTENET,DC=unioeste,DC=br ) 
+	 [4] => distinguishedname 
+	   [instancetype] => Array ( [count] => 1 
+	                      [0] => 4 ) 
+	 [5] => instancetype 
+	   [whencreated] => Array ( [count] => 1 
+	                     [0] => 20110113154036.0Z ) 
+	 [6] => whencreated 
+	   [whenchanged] => Array ( [count] => 1 
+	                     [0] => 20200213120729.0Z ) 
+	 [7] => whenchanged 
+	   [displayname] => Array ( [count] => 1 
+	                     [0] => Vanderleia Luzia Stockmann Schmidt ) 
+	 [8] => displayname 
+	   [usncreated] => Array ( [count] => 1 
+	                    [0] => 20679 ) 
+	 [9] => usncreated 
+	   [memberof] => Array ( [count] => 11 
+	                  [0] => CN=lista.servidores.CCsc,OU=Grupos,OU=UNIOESTENET,DC=unioeste,DC=br 
+					  [1] => CN=editor.portal.56,OU=Grupos,OU=UNIOESTENET,DC=unioeste,DC=br 
+					  [2] => CN=lista.agente-universitario.ccsc,OU=Grupos,OU=UNIOESTENET,DC=unioeste,DC=br 
+					  [3] => CN=lista.Participante-de-Evento,OU=Grupos,OU=UNIOESTENET,DC=unioeste,DC=br 
+					  [4] => CN=grupo-cascavel.mestradoenergia-SendAs,OU=CCSC,OU=Grupos de seguran�a de E-mails,OU=UNIOESTENET,DC=unioeste,DC=br 
+					  [5] => CN=grupo-cascavel.mestradoenergia-FullAccess,OU=CCSC,OU=Grupos de seguran�a de E-mails,OU=UNIOESTENET,DC=unioeste,DC=br 
+					  [6] => CN=CCSC-PRT-CCET_T5003i-CDT,OU=CCSC,OU=Grupos de Seguran�a de GPO,OU=UNIOESTENET,DC=unioeste,DC=br 
+					  [7] => CN=SG.VNC.Agente-Universitario,OU=Grupos,OU=UNIOESTENET,DC=unioeste,DC=br 
+					  [8] => CN=lista.CCET.Csc,OU=Grupos,OU=UNIOESTENET,DC=unioeste,DC=br 
+					  [9] => CN=lista.CCET.Csc-6,OU=Grupos,OU=UNIOESTENET,DC=unioeste,DC=br 
+					  [10] => CN=lista.Agente-Universitario,OU=Grupos,OU=UNIOESTENET,DC=unioeste,DC=br ) 
+	 [10] => memberof 
+	    [usnchanged] => Array ( [count] => 1 
+               [0] => 201987785 ) 
+	 [11] => usnchanged 
+	    [department] => Array ( [count] => 1 
+               [0] => CCET/Csc ) 
+	 [12] => department [company] => Array ( [count] => 1 
+	                                   [0] => Universidade Estadual do Oeste do Paran� ) 
+	 [13] => company [proxyaddresses] => Array ( [count] => 6 
+	                                      [0] => x500:/o=Unioeste/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=Vanderleia Luzia Stockmann Schmidt 
+										  [1] => X500:/o=ExchangeLabs/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=6b1200e1ead44d89aead9129f2c4ad18-Vanderleia 
+										  [2] => smtp:vanderleia.schmidt@unioestebr.mail.onmicrosoft.com 
+										  [3] => SMTP:Vanderleia.Schmidt@unioeste.br 
+										  [4] => smtp:Vanderleia.Stockmann@unioeste.br 
+										  [5] => smtp:vanderleias@unioeste.br ) 
+	 [14] => proxyaddresses [employeetype] => Array ( [count] => 1 
+	                                           [0] => 1 ) 
+	 [15] => employeetype [name] => Array ( [count] => 1 
+	                                 [0] => Vanderleia Luzia Stockmann Schmidt ) 
+	 [16] => name [objectguid] => Array ( [count] => 1 
+	                               [0] => �5Ǩx�G�D�>��A ) 
+	 [17] => objectguid [useraccountcontrol] => Array ( [count] => 1 
+	                                             [0] => 512 ) 
+	 [18] => useraccountcontrol [badpwdcount] => Array ( [count] => 1 
+	                                              [0] => 0 ) 
+	 [19] => badpwdcount [codepage] => Array ( [count] => 1 
+	                                    [0] => 0 ) 
+	 [20] => codepage [countrycode] => Array ( [count] => 1 
+	                                    [0] => 76 ) 
+	 [21] => countrycode [employeeid] => Array ( [count] => 1 
+	                                      [0] => 13213 ) 
+	 [22] => employeeid [badpasswordtime] => Array ( [count] => 1 
+	                                          [0] => 132260691824106053 ) 
+	 [23] => badpasswordtime [lastlogoff] => Array ( [count] => 1 
+	                                          [0] => 0 ) 
+	 [24] => lastlogoff [lastlogon] => Array ( [count] => 1 
+	                                    [0] => 132258968918784172 ) 
+	 [25] => lastlogon [pwdlastset] => Array ( [count] => 1 
+	                                    [0] => 131580987919834097 ) 
+	 [26] => pwdlastset [primarygroupid] => Array ( [count] => 1 
+	                                         [0] => 513 ) 
+	 [27] => primarygroupid [objectsid] => Array ( [count] => 1 
+	                                         [0] => /��U�_����M�_ ) 
+	 [28] => objectsid [accountexpires] => Array ( [count] => 1 
+	                                        [0] => 9223372036854775807 ) 
+	 [29] => accountexpires [logoncount] => Array ( [count] => 1 
+	                                         [0] => 256 ) 
+	 [30] => logoncount [samaccountname] => Array ( [count] => 1 
+	                                         [0] => vanderleia.schmidt ) 
+	 [31] => samaccountname [samaccounttype] => Array ( [count] => 1 
+	                                             [0] => 805306368 )
+	 [32] => samaccounttype [showinaddressbook] => Array ( [count] => 4 
+	                                                [0] => CN=Todos os Contatos,CN=All Address Lists,CN=Address Lists Container,CN=Unioeste,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=unioeste,DC=br 
+													[1] => CN=All Mail Users(VLV),CN=All System Address Lists,CN=Address Lists Container,CN=Unioeste,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=unioeste,DC=br 
+													[2] => CN=All Recipients(VLV),CN=All System Address Lists,CN=Address Lists Container,CN=Unioeste,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=unioeste,DC=br 
+													[3] => CN=Lista de Endere�os Global Padr�o,CN=All Global Address Lists,CN=Address Lists Container,CN=Unioeste,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=unioeste,DC=br ) 
+	 [33] => showinaddressbook [legacyexchangedn] => Array ( [count] => 1 
+	                                                  [0] => /o=Unioeste/ou=External (FYDIBOHF25SPDLT)/cn=Recipients/cn=3d5b6560da76464ab6300d79d7cb9fd9 ) 
+	 [34] => legacyexchangedn [userprincipalname] => Array ( [count] => 1 
+										   [0] => vanderleia.schmidt@unioeste.br ) 
+	 [35] => userprincipalname [lockouttime] => Array ( [count] => 1 
+												 [0] => 0 ) 
+	 [36] => lockouttime [ipphone] => Array ( [count] => 1 
+							[0] => *004532203151 ) 
+	 [37] => ipphone [objectcategory] => Array ( [count] => 1 
+										  [0] => CN=Person,CN=Schema,CN=Configuration,DC=unioeste,DC=br ) 
+	 [38] => objectcategory [dscorepropagationdata] => Array ( [count] => 5 
+	                                                    [0] => 20200116103515.0Z 
+														[1] => 20191206172803.0Z 
+														[2] => 20190702120200.0Z 
+														[3] => 20190401113036.0Z 
+														[4] => 16010714223649.0Z ) 
+     [39] => dscorepropagationdata [lastlogontimestamp] => Array ( [count] => 1 
+															[0] => 132260691949651149 ) 
+	 [40] => lastlogontimestamp [mail] => Array ( [count] => 1 
+								[0] => vanderleia.schmidt@unioeste.br ) 
+	 [41] => mail [msds-externaldirectoryobjectid] => Array ( [count] => 1 
+											[0] => User_8304acf9-3e92-4090-a9fc-ec5ba4d16859 ) 
+	 [42] => msds-externaldirectoryobjectid [msexchrecipientdisplaytype] => Array ( [count] => 1 
+																			 [0] => -2147483642 ) 
+	 [43] => msexchrecipientdisplaytype [msexchtextmessagingstate] => Array ( [count] => 2 
+															[0] => 302120705 
+															[1] => 16842751 ) 
+	 [44] => msexchtextmessagingstate [msrtcsip-deploymentlocator] => Array ( [count] => 1 
+	                                                                   [0] => sipfed.online.lync.com ) 
+     [45] => msrtcsip-deploymentlocator [msrtcsip-federationenabled] => Array ( [count] => 1 
+																		 [0] => TRUE ) 
+	 [46] => msrtcsip-federationenabled [msexchmailboxguid] => Array ( [count] => 1 
+																[0] => ��}� eO��R� ) 
+	 [47] => msexchmailboxguid [extensionattribute15] => Array ( [count] => 1 
+														  [0] => 45 988059625 ) 
+	 [48] => extensionattribute15 [extensionattribute9] => Array ( [count] => 1 
+															[0] => CUCM ) 
+	 [49] => extensionattribute9 [msexchusagelocation] => Array ( [count] => 1 
+												[0] => BR ) 
+	 [50] => msexchusagelocation [msexchversion] => Array ( [count] => 1 
+													 [0] => 88218628259840 ) 
+	 [51] => msexchversion [extensionattribute2] => Array ( [count] => 1 
+													 [0] => 83942459949 ) 
+	 [52] => extensionattribute2 [extensionattribute1] => Array ( [count] => 1 
+												[0] => 1 ) 
+	 [53] => extensionattribute1 [extensionattribute8] => Array ( [count] => 1 
+												[0] => EXTERNO ) 
+	 [54] => extensionattribute8 [msexchowapolicy] => Array ( [count] => 1 
+											[0] => CN=Default,CN=OWA Mailbox Policies,CN=Unioeste,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=unioeste,DC=br ) 
+	 [55] => msexchowapolicy [msrtcsip-userpolicies] => Array ( [count] => 2 
+														 [0] => 7=1 [1] => 9=5 ) 
+	 [56] => msrtcsip-userpolicies [msexchumdtmfmap] => Array ( [count] => 3 
+														 [0] => emailAddress:82633753427246438
+														 [1] => lastNameFirstName:5894278625626672464388263375342 
+														 [2] => firstNameLastName:8263375342589427862562667246438 ) 
+	 [57] => msexchumdtmfmap [msrtcsip-primaryhomeserver] => Array ( [count] => 1 
+															  [0] => CN=Lc Services,CN=Microsoft,CN=1:1,CN=Pools,CN=RTC Service,CN=Services,CN=Configuration,DC=unioeste,DC=br ) 
+	 [58] => msrtcsip-primaryhomeserver [msexchuseraccountcontrol] => Array ( [count] => 1 
+	                                                                   [0] => 0 ) 
+	 [59] => msexchuseraccountcontrol [mailnickname] => Array ( [count] => 1 
+	                                                     [0] => vanderleia.schmidt ) 
+	 [60] => mailnickname [msrtcsip-optionflags] => Array ( [count] => 1 
+													 [0] => 257 ) 
+	 [61] => msrtcsip-optionflags [msexchremoterecipienttype] => Array ( [count] => 1 
+																  [0] => 1 ) 
+     [62] => msexchremoterecipienttype [extensionattribute3] => Array ( [count] => 1 
+																 [0] => 931939 ) 
+	 [63] => extensionattribute3 [extensionattribute14] => Array ( [count] => 1 
+															[0] => vanderleials@yahoo.com ) 
+	 [64] => extensionattribute14 [msexchwhenmailboxcreated] => Array ( [count] => 1 
+																 [0] => 20160202194719.0Z ) 
+	 [65] => msexchwhenmailboxcreated [msexchrecipienttypedetails] => Array ( [count] => 1 
+	                                                                   [0] => 2147483648 ) 
+	 [66] => msexchrecipienttypedetails [msexchpoliciesincluded] => Array ( [count] => 2 
+																	 [0] => 949a2f11-c674-483a-9afb-abb9771c7be9 
+																	 [1] => {26491cfc-9e50-4857-861b-0cb8df22b5d7} ) 
+	 [67] => msexchpoliciesincluded [msrtcsip-primaryuseraddress] => Array ( [count] => 1 
+																	  [0] => sip:vanderleia.schmidt@unioeste.br ) 
+	 [68] => msrtcsip-primaryuseraddress [msrtcsip-userenabled] => Array ( [count] => 1 
+														 [0] => TRUE ) 
+	 [69] => msrtcsip-userenabled [msrtcsip-internetaccessenabled] => Array ( [count] => 1 [0] => TRUE ) 
+	 [70] => msrtcsip-internetaccessenabled [targetaddress] => Array ( [count] => 1 [0] => SMTP:vanderleia.schmidt@unioestebr.mail.onmicrosoft.com ) 
+	 [71] => targetaddress [count] => 
+	 72 
+	      [dn] => CN=Vanderleia Luzia Stockmann Schmidt,OU=Agentes Universitarios,OU=UNIOESTENET,DC=unioeste,DC=br 
+)

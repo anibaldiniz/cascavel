@@ -16,7 +16,7 @@
 <body>
     
     <div class="container my-2"> 
-        <h1>Usuários da Categoria</h1>
+        <h1 th:text="|Usuários da categoria: ${nome_categoria}|"></h1>
         <!-- TODO colocar abaixo do título o nome da categoria que todos os usuários percentes -->
         <!-- <h1 th:text="#{nome_categoria}"></h1> -->
         <table border="1" class="table table-striped table-responsive-md">
@@ -35,10 +35,9 @@
                     <td th:text="${usuario.nome}"></td>
                     <td th:text="${usuario.nomeCompleto}"></td>
                     <td th:text="${usuario.estaAtivo}? 'Ativo' : 'Inativo'"></td>
-                    <!-- <td th:text="${#calendars.format(usuario.ultimoLogin, 'dd/MMM/yyyy HH:mm')}"></td> -->
                     <td th:text="${usuario.perfil.nome}"></td>
-                    <td th:text="${usuario.ultimoLogin}"></td>
-                    <td th:text="${usuario.ultimaAlteracaoCadastro}"></td> 
+                    <td th:text="${#temporals.format(usuario.ultimoLogin, 'dd-MM-yyyy   HH:mm:ss')}"></td>
+                    <td th:text="${#temporals.format(usuario.ultimaAlteracaoCadastro, 'dd-MM-yyyy   HH:mm:ss')}"></td>
                 </tr>
             </tbody>
         </table>

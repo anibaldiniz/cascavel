@@ -50,8 +50,8 @@ public class CategoriaController {
     @GetMapping("/usuariosCategoria/{id}")
     public String visualizeUsuarios(@PathVariable (value = "id") long id_categoria, Model model){
         model.addAttribute("ListaUsuarios", categoriaService.getAllUsuarios(id_categoria));
-        // String nomeCategoria = categoriaService.getCategoriaById(id_categoria).getNome();
-        // model.addAttribute("nome_categoria", nomeCategoria);
+        String nomeCategoria = categoriaService.getCategoriaById(id_categoria).getNome();
+        model.addAttribute("nome_categoria", nomeCategoria);
         return "usuarios_categoria";
     }
 

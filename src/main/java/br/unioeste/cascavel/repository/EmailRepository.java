@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.unioeste.cascavel.model.Email;
 
 @Repository
-public interface EmailRepository extends JpaRepository<Email, Long> {
+public interface EmailRepository extends JpaRepository<Email, String> {
     
 }

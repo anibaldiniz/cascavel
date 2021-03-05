@@ -31,9 +31,6 @@ public class Documento {
     private String conteudo;
     private LocalDateTime dataInclusao;
     
-    
-
-
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;     //quem incluiu o documento

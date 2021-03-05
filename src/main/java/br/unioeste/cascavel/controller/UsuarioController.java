@@ -47,12 +47,11 @@ public class UsuarioController {
         return "redirect:/usuarios";  
     }
 
-    // @GetMapping("/usuariosCategoria/{id}")
-    // public String visualizeUsuarios(@PathVariable (value = "id") long id_categoria, Model model){
-    //     model.addAttribute("ListaUsuarios", categoriaService.getAllUsuarios(id_categoria));
-    //     // String nomeCategoria = categoriaService.getCategoriaById(id_categoria).getNome();
-    //     // model.addAttribute("nome_categoria", nomeCategoria);
-    //     return "usuarios_categoria";
-    // }
+    @GetMapping("/emailsUsuario/{id}")
+    public String visualizeEmails(@PathVariable (value = "id") long id, Model model){
+        model.addAttribute("ListaEmails", usuarioService.getUsuarioById(id).getEmails());
+        model.addAttribute("usuario", usuarioService.getUsuarioById(id));
+        return "usuarios_emails";
+    }
 
 }

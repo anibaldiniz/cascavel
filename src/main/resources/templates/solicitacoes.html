@@ -40,8 +40,9 @@
                     <td th:text="${solicitacao.solicitacao.pai.id}"></td>
                     <td th:text="${solicitacao.usuario.nome}"></td>
                     <td th:text="${solicitacao.unidade}"></td>
-                    <td th:text="${solicitacao.dataInicio}"></td>
-                    <td th:text="${solicitacao.dataFim}"></td>
+
+                    <td th:text="${#temporals.format(solicitacao.dataInicio, 'dd-MM-yyyy   HH:mm:ss')}"></td>
+                    <td th:text="${#temporals.format(solicitacao.dataFim, 'dd-MM-yyyy   HH:mm:ss')}"></td>
                     <th><a th:href="@{/formAlterarSolicitacao/{id}(id=${solicitacao.id})}"
                             class="btn btn-primary btn-sm mb-3"> Alterar </a>
                         <a th:href="@{/apagarSolicitacao/{id}(id=${solicitacao.id})}"

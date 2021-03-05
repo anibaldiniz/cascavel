@@ -35,10 +35,9 @@
                     <td th:text="${usuario.nome}"></td>
                     <td th:text="${usuario.nomeCompleto}"></td>
                     <td th:text="${usuario.estaAtivo}? 'Ativo' : 'Inativo'"></td>
-                    <!-- <td th:text="${#calendars.format(usuario.ultimoLogin, 'dd/MMM/yyyy HH:mm')}"></td> -->
                     <td th:text="${usuario.perfil.nome}"></td>
-                    <td th:text="${usuario.ultimoLogin}"></td>
-                    <td th:text="${usuario.ultimaAlteracaoCadastro}"></td> 
+                    <td th:text="${#temporals.format(usuario.ultimoLogin, 'dd-MM-yyyy   HH:mm:ss')}"></td>
+                    <td th:text="${#temporals.format(usuario.ultimaAlteracaoCadastro, 'dd-MM-yyyy   HH:mm:ss')}"></td> 
                 </tr>
             </tbody>
         </table>

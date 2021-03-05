@@ -1,37 +1,63 @@
 package br.unioeste.cascavel;
 
+import java.util.Arrays;
+
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider;
+import org.springframework.security.ldap.userdetails.UserDetailsContextMapper;
 
  
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http
-			.authorizeRequests()
-				.anyRequest().fullyAuthenticated()
-				.and()
-			.formLogin();
-	}
+  protected void configure(HttpSecurity http) throws Exception {
+    http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and()
+        .logout().permitAll();
+  }
 
-	@Override
-	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth
-			.ldapAuthentication()
-				.userDnPatterns("uid={0},ou=people")
-				.groupSearchBase("ou=groups")
-				.contextSource()
-					.url("ldap://localhost:123/dc=springframework,dc=org")
-					//.url("ldap://netsr-dmc05.unioeste.br:389")
-					.and()
-					.passwordCompare()
-					//.passwordEncoder(new BCryptPasswordEncoder())
-					.passwordAttribute("userPassword");
-	}//
-	
+  @Override
+  protected void configure(AuthenticationManagerBuilder authManagerBuilder) throws Exception {
+    authManagerBuilder.authenticationProvider(activeDirectoryLdapAuthenticationProvider())
+        .userDetailsService(userDetailsService());
+  }
+
+  @Bean
+  public AuthenticationManager authenticationManager() {
+    return new ProviderManager(Arrays.asList(activeDirectoryLdapAuthenticationProvider()));
+  }
+
+  @Bean
+  public AuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
+    ActiveDirectoryLdapAuthenticationProvider provider = new ActiveDirectoryLdapAuthenticationProvider("unioeste.br",
+        "ldap://netsr-dmc05.unioeste.br:389/", "dc=unioeste,dc=br");
+    provider.setConvertSubErrorCodesToExceptions(true);
+    provider.setUseAuthenticationRequestCredentials(true);
+    provider.setUserDetailsContextMapper(userDetailsContextMapper());
+    return provider;
+  }
+
+  @Bean
+  public UserDetailsContextMapper userDetailsContextMapper() {
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    if (authentication != null) {
+     
+   
+    Object principal = userDetailsService().loadUserByUsername(authentication.getName());
+    System.out.println("user" + principal);
+    }
+    // CustomUserMapper cUser = new CustomUserMapper();
+    // cUser.mapUserFromContext(this.getApplicationContext(), , authorities)
+    return new CustomUserMapper();
+  }
 
 }
