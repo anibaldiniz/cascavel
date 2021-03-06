@@ -1,4 +1,4 @@
-package br.unioeste.cascavel.controller;
+package br.unioeste.cascavel;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +20,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.ant("/controller/**"))
+                .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
     }
@@ -29,7 +29,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .contact(new Contact("Anibal Mantovani Diniz", "", ""))
                 .title("Unioeste - Cascavel")
-                .description("Documentação BackEnd Aplicativo Web e App")
+                .description("Documentação BackEnd - Aplicativo Web e App")
                 .license("Apache Licence Version 2.0")
                 .licenseUrl("https://apache.org")
                 .version("1.0")

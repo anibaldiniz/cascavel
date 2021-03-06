@@ -9,20 +9,27 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider;
 import org.springframework.security.ldap.userdetails.UserDetailsContextMapper;
 
- 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Override
+  @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and()
+    http
+        .authorizeRequests()
+        .antMatchers("/swagger-ui.html", "/").permitAll()
+        .anyRequest().authenticated()
+        .and()
+        .formLogin().loginPage("/login").permitAll()
+        .and()
         .logout().permitAll();
+    
   }
 
   @Override
@@ -50,14 +57,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   public UserDetailsContextMapper userDetailsContextMapper() {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     if (authentication != null) {
-     
-   
-    Object principal = userDetailsService().loadUserByUsername(authentication.getName());
-    System.out.println("user" + principal);
+
+      Object principal = userDetailsService().loadUserByUsername(authentication.getName());
+      System.out.println("user" + principal);
     }
-    // CustomUserMapper cUser = new CustomUserMapper();
-    // cUser.mapUserFromContext(this.getApplicationContext(), , authorities)
     return new CustomUserMapper();
+  }
+
+  @Override
+  public void configure(WebSecurity web) throws Exception {
+      web
+      .ignoring()
+      .antMatchers("/v2/api-docs",
+                                 "/configuration/ui",
+                                 "/swagger-resources/**",
+                                 "/configuration/security",
+                                 "/swagger-ui.html",
+                                 "/swagger-ui/**",
+                                 "/webjars/**");
   }
 
 }

@@ -51,4 +51,11 @@ public class PerfisServiceImpl implements PerfisService {
         return usuarios;
     }
 
+    @Override
+    public Perfil getPerfilByNome(String nome) {
+    
+        return perfilRepository.findByNome(nome);
+    }
+    
+
 }

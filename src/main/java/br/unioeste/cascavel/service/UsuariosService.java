@@ -10,5 +10,6 @@ public interface UsuariosService {
     void save(Usuario usuario);
     Usuario getUsuarioById(long id);
     void apagarUsuarioById(long id);
+    Usuario getUsuarioByName(String nome);
 	// List<Usuario> getAllUsuarios(long id_categoria);
 }

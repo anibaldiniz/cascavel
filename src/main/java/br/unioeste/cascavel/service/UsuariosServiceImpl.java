@@ -43,6 +43,12 @@ public class UsuariosServiceImpl implements UsuariosService {
         this.usuarioRepository.deleteById(id);
     }
 
+    @Override
+    public Usuario getUsuarioByName(String nome) {
+        return usuarioRepository.findByName(nome);
+    }
+
+
     // @Override
     // public List<Usuario> getAllUsuarios(long id_usuario) {
     //     Optional<Usuario> usuario = usuarioRepository.findById(id_usuario);

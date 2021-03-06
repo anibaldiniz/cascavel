@@ -10,6 +10,8 @@ public interface PerfisService {
     void save(Perfil perfil);
 
     Perfil getPerfilById(long id);
+    
+    Perfil getPerfilByNome(String nome);
 
     void apagarPerfilById(long id);
 
