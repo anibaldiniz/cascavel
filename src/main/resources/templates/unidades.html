@@ -21,6 +21,7 @@
                 <tr>
                     <th> Id</th>
                     <th> Nome</th>
+                    <th> Nome Institucional Abreviado</th>
                     <th> Cidade</th>
                     <th> Ações</th>
                     <th> Mais Dados</th>
@@ -30,6 +31,7 @@
                 <tr th:each="unidade : ${ListaUnidades}">
                     <td th:text="${unidade.id}"></td>
                     <td th:text="${unidade.nome}"></td>
+                    <td th:text="${unidade.denominacaoAbreviadaInstitucional}"></td>
                     <td th:text="${unidade.cidade}"></td>
                     <th><a th:href="@{/formAlterarUnidade/{id}(id=${unidade.id})}" class="btn btn-primary btn-sm mb-3">
                             Alterar </a>

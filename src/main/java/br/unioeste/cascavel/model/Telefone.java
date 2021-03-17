@@ -20,8 +20,8 @@ public class Telefone {
     private Long id;
     private Byte codPais;
     private Byte ddd;
-    private Short prefixo;  //primeiros 5 ou quatro digitos 
-    private Short sufixo;   //últimos 4 digitos
+    private String prefixo;  //primeiros 5 ou quatro digitos 
+    private String sufixo;   //últimos 4 digitos
     private Boolean fixo;   
     private Boolean ramal;  //se for ramal, o codigo do pais, o ddd e o prefixo serão vazios
 

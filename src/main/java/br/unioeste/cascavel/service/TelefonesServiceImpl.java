@@ -51,4 +51,11 @@ public class TelefonesServiceImpl implements TelefonesService {
         return usuarios;
     }
 
+    @Override
+    public Telefone getTelefoneByNumero(Byte ddd, String prefixo, String sufixo) {
+        return telefoneRepository.getTelefoneByNumero(ddd, prefixo, sufixo);
+    }
+
+    
+
 }

@@ -7,5 +7,7 @@ import br.unioeste.cascavel.model.Email;
 
 @Repository
 public interface EmailRepository extends JpaRepository<Email, String> {
+
+    Email findByEmail(String email);
     
 }

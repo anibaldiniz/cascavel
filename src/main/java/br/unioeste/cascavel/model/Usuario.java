@@ -102,7 +102,10 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Solicitacao> solicitacoes;
-    
+
+    @ManyToOne
+    @JoinColumn(name = "unidade_id")
+    private Unidade unidade;
     
     
     //chefia

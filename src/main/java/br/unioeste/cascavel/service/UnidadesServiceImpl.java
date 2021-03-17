@@ -59,4 +59,11 @@ public class UnidadesServiceImpl implements UnidadesService {
         return grupos;
     }
 
+    @Override
+    public Unidade getUnidadeByNome(String departamento) {
+        return unidadeRepository.findByNome(departamento);
+    }
+
+    
+
 }

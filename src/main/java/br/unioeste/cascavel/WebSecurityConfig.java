@@ -9,7 +9,6 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,8 +22,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     http
         .authorizeRequests()
-        .antMatchers("/swagger-ui.html", "/").permitAll()
-        .anyRequest().authenticated()
+        //.antMatchers("/swagger-ui.html","/v2/api-docs", "/").permitAll()
+        .anyRequest()//.permitAll();
+        .authenticated()
         .and()
         .formLogin().loginPage("/login").permitAll()
         .and()
@@ -64,17 +64,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     return new CustomUserMapper();
   }
 
-  @Override
-  public void configure(WebSecurity web) throws Exception {
-      web
-      .ignoring()
-      .antMatchers("/v2/api-docs",
-                                 "/configuration/ui",
-                                 "/swagger-resources/**",
-                                 "/configuration/security",
-                                 "/swagger-ui.html",
-                                 "/swagger-ui/**",
-                                 "/webjars/**");
-  }
+  // @Override
+  // public void configure(WebSecurity web) throws Exception {
+  //     web
+  //     .ignoring()
+  //     .antMatchers("/v2/api-docs",
+  //                                "/configuration/ui",
+  //                                "/swagger-resources/**",
+  //                                "/configuration/security",
+  //                                "/swagger-ui.html",
+  //                                "/swagger-ui/**",
+  //                                "/webjars/**");
+  // }
 
 }

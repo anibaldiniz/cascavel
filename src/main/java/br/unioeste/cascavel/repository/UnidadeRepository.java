@@ -7,5 +7,8 @@ import br.unioeste.cascavel.model.Unidade;
 
 @Repository
 public interface UnidadeRepository extends JpaRepository<Unidade, Long> {
+
+    //@Query(value = "SELECT * FROM Unidade WHERE nome like '?1'", nativeQuery=true)
+    Unidade findByNome(String departamento);
     
 }

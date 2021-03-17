@@ -187,3 +187,33 @@ Array (
 	 72 
 	      [dn] => CN=Vanderleia Luzia Stockmann Schmidt,OU=Agentes Universitarios,OU=UNIOESTENET,DC=unioeste,DC=br 
 )
+
+
+
+objectclass = top peson organizationalPerson user
+cn					  Anibal Mantovani Diniz
+displayname           Anibal Mantovani Diniz
+extensionattribute14  anibaldiniz@gmail.com
+extensionattribute15  45 991070916
+extensionattribute3   689193  - senha para impressora
+extensionattribute2   61529249953  - cpf
+userprincipalname     anibal.diniz@unioeste.br
+name                  anibal
+memberof   lista.CCET.Csc
+           lista.CCsc
+		   lista.docente.ccsc
+		   lista.Docente
+departament  		CCET/Csc
+employeetype        2
+samaccountname		anibal.diniz
+distinguishedname   CN=Anibal Mantovani Diniz, OU=Docente,OU=UNIOESTENET,DC=unioeste,DC=br
+authorigbl        são as listas que pode enviar emailAddress
+	              "CN=lista.academico-graduacao.ccsc,OU=6,OU=Grupos,OU=UNIOESTENET,DC=unioeste,DC=br"
+				  "CN=lista.academico-mestrado.ccsc,OU=6,OU=Grupos,OU=UNIOESTENET,DC=unioeste,DC=br"
+				  "CN=lista.academico-doutorado.ccsc,OU=6,OU=Grupos,OU=UNIOESTENET,DC=unioeste,DC=br"
+				  "CN=lista.academico-pos-doutorado.ccsc,OU=6,OU=Grupos,OU=UNIOESTENET,DC=unioeste,DC=br"
+				  "CN=lista.academico-especializacao.ccsc,OU=6,OU=Grupos,OU=UNIOESTENET,DC=unioeste,DC=br"
+				  "CN=lista.agente-universitario.ccsc,OU=6,OU=Grupos,OU=UNIOESTENET,DC=unioeste,DC=br"
+				  "CN=lista.docente.ccsc,OU=6,OU=Grupos,OU=UNIOESTENET,DC=unioeste,DC=br"
+				  "CN=lista.estagiario.ccsc,OU=6,OU=Grupos,OU=UNIOESTENET,DC=unioeste,DC=br"
+				  "CN=lista.cargo-comissionado.ccsc,OU=6,OU=Grupos,OU=UNIOESTENET,DC=unioeste,DC=br"

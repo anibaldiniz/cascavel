@@ -55,4 +55,12 @@ public class CategoriaController {
         return "usuarios_categoria";
     }
 
+    @GetMapping("/listasCategoria/{id}")
+    public String visualizeListasCategoria(@PathVariable (value = "id") long id_categoria, Model model){
+        model.addAttribute("ListasEmails", categoriaService.getAllListas(id_categoria));
+        String nomeCategoria = categoriaService.getCategoriaById(id_categoria).getNome();
+        model.addAttribute("nome_categoria", nomeCategoria);
+        return "listas_categoria";
+    }
+
 }

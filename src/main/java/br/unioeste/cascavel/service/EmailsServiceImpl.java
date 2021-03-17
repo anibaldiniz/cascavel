@@ -43,4 +43,9 @@ public class EmailsServiceImpl implements EmailsService {
         this.emailRepository.deleteById(id);
     }
 
+    @Override
+    public Email getEmailByEmail(String email) {
+        return this.emailRepository.findByEmail(email);
+    }
+
 }

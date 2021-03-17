@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.unioeste.cascavel.model.Categoria;
+import br.unioeste.cascavel.model.Lista;
 import br.unioeste.cascavel.model.Usuario;
 import br.unioeste.cascavel.repository.CategoriaRepository;
 
@@ -51,6 +52,16 @@ public class CategoriasServiceImpl implements CategoriasService {
         return usuarios;
     }
 
-    
+    @Override
+    public List<Lista> getAllListas(long id_categoria) {
+        Optional<Categoria> categoria = categoriaRepository.findById(id_categoria);
+        List<Lista> listas = categoria.get().getListas();
+        return listas;
+    }
+
+    @Override
+    public Categoria getCategoriaByNome(String OUCategoria) {
+        return categoriaRepository.findByNome(OUCategoria);
+    }
     
 }

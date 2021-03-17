@@ -19,4 +19,6 @@ public interface UnidadesService {
 	List<Localizacao> getAllLocalizacoes(long id_unidade);
 
 	List<Grupo> getAllGrupos(long id_unidade);
+
+    Unidade getUnidadeByNome(String departamento);
 }

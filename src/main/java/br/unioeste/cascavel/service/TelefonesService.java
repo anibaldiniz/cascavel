@@ -16,4 +16,6 @@ public interface TelefonesService {
     List<Telefone> getAllTelefones();
 
 	List<Usuario> getAllUsuarios(long id_telefone);
+
+    Telefone getTelefoneByNumero(Byte ddd, String prefixo, String sufixo);
 }

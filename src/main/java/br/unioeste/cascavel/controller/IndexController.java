@@ -16,13 +16,6 @@ public class IndexController {
         return "login";
     }
 
-    @GetMapping("/s")
-    public String getSwagger() {
-        return "swagger-ui";
-    }
-
-   
-
     
 }
 

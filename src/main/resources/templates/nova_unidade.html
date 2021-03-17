@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Gerenciamento de Unidades</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h1>Gerenciamento de Unidades</h1>
+		<hr>
+		<h2>Incluir unidade</h2>
+
+		<form action="#" th:action="@{/incluirUnidade}" th:object="${unidade}"
+			method="POST">
+			<input type="text" th:field="*{nome}"
+				placeholder="Nome da unidade ex: Campus de Cascavel/Núcleo Experimental de Engenharia Agrícola/Clinica de Odontologia e etc... " class="form-control mb-4 col-4">
+			<input type="text" th:field="*{denominacaoAbreviadaInstitucional}"
+				placeholder="Nome Abreviado Institucional ex: ccsc, CCET, ..., NEEA" class="form-control mb-4 col-4">
+			<input type="text" th:field="*{cidade}"
+				placeholder="Nome da cidade onde está localizada a unidade ex: Cascavel, Foz do Iguaçu e etc.." class="form-control mb-4 col-4">
+				<button type="submit" class="btn btn-info col-2"> Incluir</button>
+		</form>
+		
+		<hr>
+		
+		<a th:href = "@{/unidades}"> Retorne para Lista de Unidades</a>
+	</div>
+</body>
+</html>

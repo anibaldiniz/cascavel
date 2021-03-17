@@ -10,4 +10,5 @@ public interface EmailsService {
     Email getEmailById(String id);
     void apagarEmailById(String id);
 	List<Email> getAllEmails();
+    Email getEmailByEmail(String email);
 }

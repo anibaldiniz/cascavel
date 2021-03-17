@@ -32,9 +32,12 @@
                     <td th:text="${categoria.id}"></td>
                     <td th:text="${categoria.nome}"></td>
                     <th><a th:href = "@{/formAlterarCategoria/{id}(id=${categoria.id})}" class="btn btn-primary btn-sm mb-3"> Alterar </a>
-                        <a th:href = "@{/apagarCategoria/{id}(id=${categoria.id})}" class="btn btn-danger btn-sm mb-3"> Excluir </a></th>
-                        <th> 
-                        <a th:href = "@{/usuariosCategoria/{id}(id=${categoria.id})}" class="btn btn-info btn-sm mb-3"> Usuários </a></th>
+                        <a th:href = "@{/apagarCategoria/{id}(id=${categoria.id})}" class="btn btn-danger btn-sm mb-3"> Excluir </a>
+                    </th>
+                    <th> 
+                        <a th:href = "@{/usuariosCategoria/{id}(id=${categoria.id})}" class="btn btn-info btn-sm mb-3"> Usuários </a>
+                        <a th:href = "@{/listasCategoria/{id}(id=${categoria.id})}" class="btn btn-info btn-sm mb-3"> Listas de Email </a>
+                    </th>
                 </tr>
                 </tbody>
             </table>

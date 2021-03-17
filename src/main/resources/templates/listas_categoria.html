@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Gerenciamento de Categorias</title>
+
+    <link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+	
+</head>
+
+
+<body>
+    
+    <div class="container my-2"> 
+        <h1 th:text="|Listas da categoria: ${nome_categoria}|"></h1>
+        <!-- TODO colocar abaixo do título o nome da categoria que todos os usuários percentes -->
+        <!-- <h1 th:text="#{nome_categoria}"></h1> -->
+        <table border="1" class="table table-striped table-responsive-md">
+            <thead>
+                <tr>
+                    <th> Nome da lista</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="lista : ${ListasEmails}">
+                    <td th:text="${lista.nomeLista}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href = "@{/categorias}"> Voltar para Categorias</a>    
+    </div>
+
+
+</body>
+
+</html>
