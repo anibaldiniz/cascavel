@@ -206,7 +206,7 @@ INSERT INTO `perfil` (`id`, `nome`) VALUES
 (1, 'Administrador'),
 (2, 'Chefe de Seção'),
 (3, 'Corresponsável'),
-(4, 'usuário\r\n                                     ');
+(4, 'usuário');
 
 -- --------------------------------------------------------
 

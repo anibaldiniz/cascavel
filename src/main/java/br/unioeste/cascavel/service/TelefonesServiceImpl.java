@@ -53,7 +53,7 @@ public class TelefonesServiceImpl implements TelefonesService {
 
     @Override
     public Telefone getTelefoneByNumero(Byte ddd, String prefixo, String sufixo) {
-        return telefoneRepository.getTelefoneByNumero(ddd, prefixo, sufixo);
+        return telefoneRepository.findByDddAndPrefixoAndSufixo(ddd, prefixo, sufixo);
     }
 
     

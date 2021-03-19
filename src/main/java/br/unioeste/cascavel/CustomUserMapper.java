@@ -106,7 +106,7 @@ public class CustomUserMapper extends LdapUserDetailsMapper {
                 unidade.setDenominacaoAbreviadaInstitucional(departamento);
                 unidadeService.save(unidade);
                 unidade = unidadeService.getUnidadeByNome(departamento);
-                //usuario.setUnidade(unidade);
+                // usuario.setUnidade(unidade);
                 // fazer a criação do evento de uma nova unidade criada
                 Evento evento = new Evento();
                 evento.setData(LocalDateTime.now());
@@ -114,11 +114,31 @@ public class CustomUserMapper extends LdapUserDetailsMapper {
                         + "  pela inclusão do usuário:" + username);
                 eventoService.save(evento);
             }
+            List<Usuario> usuarios = unidade.getUsuarios();
+            if (usuarios == null) {
+                usuarios = new LinkedList<Usuario>();
+            }
+            usuarios.add(usuario); // pega a lista de usuarios da unidade e adiciona o usuario nela
+            unidade.setUsuarios(usuarios);
+
             usuario.setUnidade(unidade);
             // o perfil será geral usuário
             // depois por edição de um administrador poderá ser alterado
-            Perfil perfil = perfilService.getPerfilByNome("usuário");
+
+            List<Usuario> usuariosPerfil = new LinkedList<Usuario>();
+            Perfil perfil = perfilService.getPerfilByNome("Usuário");
+            if (perfil != null) {
+                perfil = new Perfil();
+                perfil.setNome("Usuário");
+            }
+            usuariosPerfil = perfil.getUsuarios();
+            if (usuariosPerfil == null) {
+                usuariosPerfil = new LinkedList<Usuario>();
+            }
+
             usuario.setPerfil(perfil);
+            perfil.setUsuarios(usuariosPerfil);
+            perfilService.save(perfil);
 
             Email email1 = null, email2 = null;
             String email = ctx.getStringAttributes("mail")[0];
@@ -127,8 +147,6 @@ public class CustomUserMapper extends LdapUserDetailsMapper {
                 if (email1 == null) {
                     email1 = new Email();
                     email1.setEmail(email);
-                    emailService.save(email1);
-                    email1 = emailService.getEmailByEmail(email);
                 }
                 List<Email> emails = usuario.getEmails();
                 if (emails == null) {
@@ -168,7 +186,7 @@ public class CustomUserMapper extends LdapUserDetailsMapper {
                 categoriaService.save(categoria);
                 categoria = categoriaService.getCategoriaByNome(OUCategoria);
                 // busca o ponteiro agora com o id do banco da categoria
-                //categoria = categoriaService.getCategoriaByNome(OUCategoria);
+                // categoria = categoriaService.getCategoriaByNome(OUCategoria);
                 // criar um evento da criação de uma nova categoria
                 Evento evento = new Evento();
                 evento.setData(LocalDateTime.now());
@@ -219,8 +237,8 @@ public class CustomUserMapper extends LdapUserDetailsMapper {
                     telefoneService.save(telefoneCelular);
                     // busca o ponteiro agora com o id do banco da categoria
                     telefoneCelular = telefoneService.getTelefoneByNumero(ddd, prefixo, sufixo);
-                    listaTelefone.add(telefoneCelular);
                 }
+                listaTelefone.add(telefoneCelular);
             }
 
             // para pegar o telefone que é do usuário - ramal
@@ -244,9 +262,9 @@ public class CustomUserMapper extends LdapUserDetailsMapper {
                     telefoneService.save(telefoneRamal);
                     // busca o ponteiro agora com o id do banco da categoria
                     telefoneRamal = telefoneService.getTelefoneByNumero(ddd, prefixo, sufixo);
-                    // acrescenta na lista de telefones do usuario
-                    listaTelefone.add(telefoneRamal);
                 }
+                // acrescenta na lista de telefones do usuario
+                listaTelefone.add(telefoneRamal);
             }
             if (listaTelefone.size() > 0)
                 usuario.setTelefones(listaTelefone);

@@ -1,0 +1,55 @@
+INSERT INTO `categoria` (`id`, `nome`) VALUES
+(1, 'Docente'),
+(2, 'Discente'),
+(3, 'Agente Universitário'),
+(4, 'Cargo Comissionado'),
+(5, 'Estagiário'),
+(6, 'Externo');
+
+INSERT INTO `grupo` (`id`, `nome`, `localizacao_id`) VALUES
+(1, 'Secretaria Administrativa', NULL),
+(2, 'Secretaria Financeira', NULL),
+(3, 'Secretaria Acadêmica', NULL),
+(4, 'Seção de Recursos Humanos', NULL),
+(5, 'Seção de Patrimônio', NULL),
+(6, 'Seção de Amoxarifado', NULL),
+(7, 'Seção de Informática', NULL),
+(8, 'Direção Geral', NULL),
+(9, 'Seção de Compras', NULL),
+(10, 'Seção de Licitação', NULL),
+(11, 'Biblioteca', NULL),
+(12, 'Seção de Planejamento e Convênios', NULL),
+(13, 'Seção de Transportes', NULL),
+(14, 'Seção de Serviços de Manutenção e Conservação', NULL),
+(15, 'Seção de Segurança', NULL),
+(16, 'Seção de Serviços de Apoio', NULL),
+(17, 'Seção de Serviços Externos', NULL),
+(18, 'Seção de Manutenção de Equipamentos e Laboratórios', NULL),
+(19, 'Seção de Apoio Técnico aos Laboratórios', NULL),
+(20, 'Seção de Contabilidade', NULL),
+(21, 'Divisão Financeira', NULL),
+(22, 'Divisão de Pós-Graduação', NULL),
+(23, 'Divisão de Graduação', NULL),
+(24, 'Assessoria Jurídica', NULL);
+
+INSERT INTO `lista` (`id`, `nome_lista`, `categoria_id`) VALUES
+(1, 'lista.docente-ccsc', 1),
+(2, 'lista.academico-doutorado.ccsc', 2),
+(3, 'lista.academico-especializacao.ccsc', 2),
+(4, 'lista.academico-graduacao.ccsc', 2),
+(5, 'lista.academico-mestrado.ccsc', 2),
+(6, 'lista.academico-pos-doutorado.ccsc', 2),
+(7, 'lista.agente-universitario.ccsc', 3),
+(8, 'lista.cargo-comissionado.ccsc', 4),
+(9, 'lista.estagiario.ccsc', 5);
+
+INSERT INTO `perfil` (`id`, `nome`) VALUES
+(1, 'Administrador'),
+(2, 'Chefe de Seção'),
+(3, 'Corresponsável'),
+(4, 'usuário');
+
+INSERT INTO `telefone` (`id`, `cod_pais`, `ddd`, `fixo`, `prefixo`, `ramal`, `sufixo`) VALUES
+(1, 55, 45, '0', '99107', '0', '0916'),
+(2, 55, 45, '0', '3220', '1', '4227');
+
