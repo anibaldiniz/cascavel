@@ -2,8 +2,12 @@ package br.unioeste.cascavel;
 
 import java.util.Arrays;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
+import org.springframework.ldap.core.LdapTemplate;
+import org.springframework.ldap.core.support.LdapContextSource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
@@ -18,18 +22,17 @@ import org.springframework.security.ldap.userdetails.UserDetailsContextMapper;
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+  @Autowired
+  private Environment env;
+
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http
-        .authorizeRequests()
-        //.antMatchers("/swagger-ui.html","/v2/api-docs", "/").permitAll()
-        .anyRequest()//.permitAll();
-        .authenticated()
-        .and()
-        .formLogin().loginPage("/login").permitAll()
-        .and()
-        .logout().logoutSuccessUrl("/login.html").permitAll();
-    
+    http.authorizeRequests()
+        // .antMatchers("/swagger-ui.html","/v2/api-docs", "/").permitAll()
+        .anyRequest()// .permitAll();
+        .authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()
+        .logoutSuccessUrl("/login.html").permitAll();
+
   }
 
   @Override
@@ -59,22 +62,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     if (authentication != null) {
 
       Object principal = userDetailsService().loadUserByUsername(authentication.getName());
-      System.out.println("user" + principal);
     }
     return new CustomUserMapper();
   }
 
-  // @Override
-  // public void configure(WebSecurity web) throws Exception {
-  //     web
-  //     .ignoring()
-  //     .antMatchers("/v2/api-docs",
-  //                                "/configuration/ui",
-  //                                "/swagger-resources/**",
-  //                                "/configuration/security",
-  //                                "/swagger-ui.html",
-  //                                "/swagger-ui/**",
-  //                                "/webjars/**");
-  // }
+  @Bean
+  public LdapContextSource contextSource() {
+    LdapContextSource contextSource = new LdapContextSource();
+    contextSource.setUrl(env.getRequiredProperty("ldap.url"));
+    contextSource.setBase(env.getRequiredProperty("ldap.partitionSuffix"));
+    contextSource.setUserDn(env.getRequiredProperty("ldap.principal"));
+    contextSource.setPassword(env.getRequiredProperty("ldap.password"));
+    return contextSource;
+  }
 
+  @Bean
+  public LdapTemplate ldapTemplate() {
+    return new LdapTemplate(contextSource());
+  }
+
+  
 }

@@ -4,9 +4,16 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.naming.directory.Attributes;
+import javax.naming.directory.DirContext;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
+import org.springframework.ldap.core.LdapTemplate;
+import org.springframework.ldap.core.support.LdapContextSource;
 
 import br.unioeste.cascavel.model.Email;
 import br.unioeste.cascavel.model.Evento;
@@ -45,7 +52,9 @@ class CascavelApplicationTests {
 	@Autowired
 	TelefonesService telefoneService;
 
-	
+	@Autowired
+	private Environment env;
+
 	@Test
 	void contextLoads() {
 
@@ -106,27 +115,53 @@ class CascavelApplicationTests {
 
 	@Test
 	void testeIncluirPerfil() {
-		
-	    //usuarioService.deleteAll();
-		
+
+		// usuarioService.deleteAll();
 
 		Usuario usuario = new Usuario();
 		usuario.setNome("anibal.diniz");
 		usuario.setNomeCompleto("Anibal mantovani Diniz");
 		List<Perfil> perfis = perfilService.getPerfilByNome("Usuário");
-		Perfil perfil =null;
-		if (perfis.size()>0) {
+		Perfil perfil = null;
+		if (perfis.size() > 0) {
 			perfil = perfis.get(0);
-		}else{
+		} else {
 			perfil = new Perfil();
 			perfil.setNome("Usuário");
 		}
-	    
+
 		perfilService.save(perfil);
-		
+
 		usuario.setPerfil(perfil);
 
 		usuarioService.save(usuario);
+	}
+
+	@Bean
+	public LdapContextSource contextSource() {
+		LdapContextSource contextSource = new LdapContextSource();
+		contextSource.setUrl(env.getRequiredProperty("ldap.url"));
+		contextSource.setBase(env.getRequiredProperty("ldap.partitionSuffix"));
+		contextSource.setUserDn(env.getRequiredProperty("ldap.principal"));
+		contextSource.setPassword(env.getRequiredProperty("ldap.password"));
+		return contextSource;
+	}
+
+	@Bean
+	public LdapTemplate ldapTemplate() {
+		return new LdapTemplate(contextSource());
+	}
+
+	public DirContext authenticate(String username, String password) {
+		DirContext dir =   contextSource().getContext("cn=" + username + ",ou=users," + env.getRequiredProperty("ldap.partitionSuffix"),
+				password);
+		return dir;
+	}
+
+	@Test
+	void testarBuscaUsuarioLDap(){
+		DirContext dir = authenticate("anibal.diniz", "EuSouFeliz55");
+		
 	}
 
 }
