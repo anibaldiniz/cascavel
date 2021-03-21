@@ -50,6 +50,7 @@ public class GrupoController {
     @GetMapping("/usuariosGrupo/{id}")
     public String visualizeUsuarios(@PathVariable (value = "id") long id_grupo, Model model){
         model.addAttribute("ListaUsuarios", grupoService.getAllUsuarios(id_grupo));
+        model.addAttribute("nome_grupo", grupoService.getGrupoById(id_grupo).getNome());
         return "usuarios_grupo";
     }
     

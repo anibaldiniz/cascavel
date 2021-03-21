@@ -45,7 +45,11 @@ public class EmailsServiceImpl implements EmailsService {
 
     @Override
     public Email getEmailByEmail(String email) {
-        return this.emailRepository.findByEmail(email);
+        List<Email> listaEmails= emailRepository.findByEmail(email);
+        if(listaEmails.size()>0){
+            return listaEmails.get(0);
+        }
+        return null;
     }
 
 }

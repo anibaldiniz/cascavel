@@ -8,6 +8,7 @@ public interface UsuariosService {
 
     List<Usuario> getAllUsuarios();
     void save(Usuario usuario);
+    void deleteAll();
     Usuario getUsuarioById(long id);
     void apagarUsuarioById(long id);
     Usuario getUsuarioByName(String nome);

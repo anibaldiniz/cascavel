@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Gerenciamento de Categorias</title>
+    <title>Gerenciamento de Grupo</title>
 
     <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -16,23 +16,21 @@
 <body>
     
     <div class="container my-2"> 
-        <h1 th:text="|Usuários da categoria: ${nome_categoria}|"></h1>
+        <h1 th:text="|Grupos do Usuário: ${usuario_nome}|"></h1>
         <br/>
         <table border="1" class="table table-striped table-responsive-md">
             <thead>
                 <tr>
-                    <th> Usuário</th>
-                    <th> Nome Completo</th>
+                    <th> Grupo</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="usuario : ${ListaUsuarios}">
-                    <td th:text="${usuario.nome}"></td>
-                    <td th:text="${usuario.nomeCompleto}"></td>
+                <tr th:each="grupo : ${ListaGrupos}">
+                    <td th:text="${grupo.nome}"></td>
                 </tbody>
             </table>
             <i class="fa fa-space-shuttle" aria-hidden="true"></i>
-            <a th:href = "@{/categorias}"> Voltar Categorias</a>    
+            <a th:href = "@{/usuarios}"> Voltar para Usuários</a>    
     </div>
 
 

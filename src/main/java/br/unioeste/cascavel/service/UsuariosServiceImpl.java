@@ -48,6 +48,12 @@ public class UsuariosServiceImpl implements UsuariosService {
         return usuarioRepository.findByName(nome);
     }
 
+    @Override
+    public void deleteAll() {
+        usuarioRepository.deleteAll();
+        
+    }
+
 
     // @Override
     // public List<Usuario> getAllUsuarios(long id_usuario) {

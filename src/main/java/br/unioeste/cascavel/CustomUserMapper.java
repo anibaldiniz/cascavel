@@ -85,9 +85,11 @@ public class CustomUserMapper extends LdapUserDetailsMapper {
 
             // busca para ver se já existe a unidade que este usuário deve pertencer
             // no meu caso é CCET/CSC
-            Unidade unidade = unidadeService.getUnidadeByNome(departamento);
-            if (unidade == null) {
-
+            List<Unidade> unidades = unidadeService.getUnidadeByNome(departamento);
+            Unidade unidade;
+            if (unidades.size() > 0) {
+                unidade = unidades.get(0);
+            } else {
                 // TODO lembrar de criar gatilho para opereção manual
                 // pois é fácil criar a unidade mas tem que gerar o nome
                 // ou a denominacaoAbreviadaInstitucional e também a localização
@@ -104,41 +106,32 @@ public class CustomUserMapper extends LdapUserDetailsMapper {
                 // rever a questão do nome da unidade
                 unidade.setNome(departamento);
                 unidade.setDenominacaoAbreviadaInstitucional(departamento);
-                unidadeService.save(unidade);
-                unidade = unidadeService.getUnidadeByNome(departamento);
-                // usuario.setUnidade(unidade);
-                // fazer a criação do evento de uma nova unidade criada
-                Evento evento = new Evento();
-                evento.setData(LocalDateTime.now());
-                evento.setServico("Criação de uma nova Unidade -" + cidade + "-" + departamento + "-" + departamento
-                        + "  pela inclusão do usuário:" + username);
-                eventoService.save(evento);
             }
-            List<Usuario> usuarios = unidade.getUsuarios();
-            if (usuarios == null) {
-                usuarios = new LinkedList<Usuario>();
-            }
-            usuarios.add(usuario); // pega a lista de usuarios da unidade e adiciona o usuario nela
-            unidade.setUsuarios(usuarios);
+            unidadeService.save(unidade);
 
             usuario.setUnidade(unidade);
+            // fazer a criação do evento de uma nova unidade criada
+            Evento evento = new Evento();
+            evento.setData(LocalDateTime.now());
+            evento.setServico("Criação de uma nova Unidade -" + unidade.getCidade() + "-" + departamento + "-"
+                    + departamento + "  pela inclusão do usuário:" + username);
+            eventoService.save(evento);
+
             // o perfil será geral usuário
             // depois por edição de um administrador poderá ser alterado
 
-            List<Usuario> usuariosPerfil = new LinkedList<Usuario>();
-            Perfil perfil = perfilService.getPerfilByNome("Usuário");
-            if (perfil != null) {
+            List<Perfil> perfis = perfilService.getPerfilByNome("Usuário");
+            Perfil perfil = null;
+            if (perfis.size() > 0) {
+                perfil = perfis.get(0);
+            } else {
                 perfil = new Perfil();
                 perfil.setNome("Usuário");
             }
-            usuariosPerfil = perfil.getUsuarios();
-            if (usuariosPerfil == null) {
-                usuariosPerfil = new LinkedList<Usuario>();
-            }
+
+            perfilService.save(perfil);
 
             usuario.setPerfil(perfil);
-            perfil.setUsuarios(usuariosPerfil);
-            perfilService.save(perfil);
 
             Email email1 = null, email2 = null;
             String email = ctx.getStringAttributes("mail")[0];
@@ -148,12 +141,8 @@ public class CustomUserMapper extends LdapUserDetailsMapper {
                     email1 = new Email();
                     email1.setEmail(email);
                 }
-                List<Email> emails = usuario.getEmails();
-                if (emails == null) {
-                    emails = new LinkedList<Email>(); // esta lista é para ser adicionada ao usuário
-                }
-                emails.add(email1);
-                usuario.setEmails(emails);
+                //emailService.save(email1);
+                email1.setUsuarioEmails(usuario);
             }
 
             // em princípio todos dos usuários tem este campo preenchido pela regra do AD ..
@@ -164,16 +153,16 @@ public class CustomUserMapper extends LdapUserDetailsMapper {
                 if (email2 == null) {
                     email2 = new Email();
                     email2.setEmail(email);
-                    emailService.save(email2);
-                    email2 = emailService.getEmailByEmail(email);
                 }
-                List<Email> emails = usuario.getEmails();
-                if (emails == null) {
-                    emails = new LinkedList<Email>(); // esta lista é para ser adicionada ao usuário
-                }
-                emails.add(email2);
-                usuario.setEmails(emails);
+                //emailService.save(email2);
+                email2.setUsuarioEmails(usuario);
+                
             }
+            List<Email> listaEmails = new LinkedList<Email>();
+            listaEmails.add(email1);
+            listaEmails.add(email2);
+            usuario.setEmails(listaEmails);
+
             // lá no final acrescenta ao usuário estes objeto
 
             String distinguishedname = ctx.getStringAttributes("distinguishedname")[0];
@@ -188,7 +177,7 @@ public class CustomUserMapper extends LdapUserDetailsMapper {
                 // busca o ponteiro agora com o id do banco da categoria
                 // categoria = categoriaService.getCategoriaByNome(OUCategoria);
                 // criar um evento da criação de uma nova categoria
-                Evento evento = new Evento();
+                evento = new Evento();
                 evento.setData(LocalDateTime.now());
                 evento.setServico(
                         "Criação de uma nova Cateforia - " + OUCategoria + "  pela inclusão do usuário:" + username);

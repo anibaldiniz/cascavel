@@ -52,7 +52,7 @@ public class PerfisServiceImpl implements PerfisService {
     }
 
     @Override
-    public Perfil getPerfilByNome(String nome) {
+    public List<Perfil> getPerfilByNome(String nome) {
     
         return perfilRepository.findByNome(nome);
     }

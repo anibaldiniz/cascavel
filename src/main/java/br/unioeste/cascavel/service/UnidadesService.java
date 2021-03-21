@@ -20,5 +20,5 @@ public interface UnidadesService {
 
 	List<Grupo> getAllGrupos(long id_unidade);
 
-    Unidade getUnidadeByNome(String departamento);
+    List<Unidade> getUnidadeByNome(String departamento);
 }

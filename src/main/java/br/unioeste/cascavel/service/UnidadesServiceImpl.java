@@ -60,7 +60,7 @@ public class UnidadesServiceImpl implements UnidadesService {
     }
 
     @Override
-    public Unidade getUnidadeByNome(String departamento) {
+    public List<Unidade> getUnidadeByNome(String departamento) {
         return unidadeRepository.findByNome(departamento);
     }
 

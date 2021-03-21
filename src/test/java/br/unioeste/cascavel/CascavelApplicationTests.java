@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import br.unioeste.cascavel.model.Email;
 import br.unioeste.cascavel.model.Evento;
+import br.unioeste.cascavel.model.Perfil;
 import br.unioeste.cascavel.model.Telefone;
 import br.unioeste.cascavel.model.Usuario;
 import br.unioeste.cascavel.service.CategoriasService;
@@ -44,6 +45,7 @@ class CascavelApplicationTests {
 	@Autowired
 	TelefonesService telefoneService;
 
+	
 	@Test
 	void contextLoads() {
 
@@ -104,29 +106,27 @@ class CascavelApplicationTests {
 
 	@Test
 	void testeIncluirPerfil() {
-
-		List<Usuario> usuarios = usuarioService.getAllUsuarios();
-		for (Usuario usuario2 : usuarios) {
-			usuarioService.remove(usuario2);
-		}
+		
+	    //usuarioService.deleteAll();
+		
 
 		Usuario usuario = new Usuario();
 		usuario.setNome("anibal.diniz");
 		usuario.setNomeCompleto("Anibal mantovani Diniz");
-		List<Usuario> usuariosPerfil = new LinkedList<Usuario>();
-		Perfil perfil = perfilService.getPerfilByNome("Usuário");
-		if (perfil != null) {
+		List<Perfil> perfis = perfilService.getPerfilByNome("Usuário");
+		Perfil perfil =null;
+		if (perfis.size()>0) {
+			perfil = perfis.get(0);
+		}else{
 			perfil = new Perfil();
 			perfil.setNome("Usuário");
 		}
-		usuariosPerfil = perfil.getUsuarios();
-		if (usuariosPerfil == null) {
-			usuariosPerfil = new LinkedList<Usuario>();
-		}
-
-		usuario.setPerfil(perfil);
-		perfil.setUsuarios(usuariosPerfil);
+	    
 		perfilService.save(perfil);
+		
+		usuario.setPerfil(perfil);
+
+		usuarioService.save(usuario);
 	}
 
 }

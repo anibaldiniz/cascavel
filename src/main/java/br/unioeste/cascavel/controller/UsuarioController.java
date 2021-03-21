@@ -17,6 +17,7 @@ public class UsuarioController {
     @Autowired
     private UsuariosService usuarioService;
 
+
     @GetMapping("/usuarios")
     public String viewHomePage(Model model){
         model.addAttribute("ListaUsuarios", usuarioService.getAllUsuarios());
@@ -52,6 +53,25 @@ public class UsuarioController {
         model.addAttribute("ListaEmails", usuarioService.getUsuarioById(id).getEmails());
         model.addAttribute("usuario", usuarioService.getUsuarioById(id));
         return "usuarios_emails";
+    }
+
+    @GetMapping("/telefonesUsuario/{id}")
+    public String visualizeTelefones(@PathVariable (value = "id") long id, Model model){
+        model.addAttribute("ListaTelefones", usuarioService.getUsuarioById(id).getTelefones());
+        model.addAttribute("usuario", usuarioService.getUsuarioById(id));
+        return "telefones_usuarios";
+    }
+    @GetMapping("/categoriasUsuario/{id}")
+    public String visualizeCategorias(@PathVariable (value = "id") long id, Model model){
+        model.addAttribute("ListaCategorias", usuarioService.getUsuarioById(id).getCategorias());
+        model.addAttribute("usuario", usuarioService.getUsuarioById(id));
+        return "categorias_usuarios";
+    }
+    @GetMapping("/gruposUsuario/{id}")
+    public String visualizeGrposDoUsuario(@PathVariable (value = "id") long id, Model model){
+        model.addAttribute("ListaGrupos", usuarioService.getUsuarioById(id).getGrupos());
+        model.addAttribute("usuario_nome", usuarioService.getUsuarioById(id).getNome());
+        return "usuarios_grupo";
     }
 
 }

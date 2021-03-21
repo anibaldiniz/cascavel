@@ -11,7 +11,7 @@ public interface PerfisService {
 
     Perfil getPerfilById(long id);
     
-    Perfil getPerfilByNome(String nome);
+    List<Perfil> getPerfilByNome(String nome);
 
     void apagarPerfilById(long id);
 

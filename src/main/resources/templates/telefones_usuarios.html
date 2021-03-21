@@ -24,23 +24,21 @@
                 <tr>
                     <th> Código do País</th>
                     <th> DDD</th>
-                    <th> Prefixo</th>
-                    <th> Sufixo</th>
-                    <th> Fixo?</th>
-                    <th> Ramal</th>
+                    <th> Telefone</th>
+                    <th> Tipo</th>
+                   
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="telefone : ${ListaTelefones}">
                     <td th:text="${telefone.codPais}"></td>
                     <td th:text="${telefone.ddd}"></td>
-                    <td th:text="${telefone.prefixo}"></td>
-                    <td th:text="${telefone.sufixo}"></td>
-                    <td th:text="${telefone.fixo}? 'Fixo' : 'Móvel'"></td>
+                    <td th:text="${telefone.prefixo +'-'+telefone.sufixo}"></td>
+                    <td th:text="${telefone.fixo}? 'Fixo' : (${telefone.ramal}?'Ramal' : 'Celular')"></td>
                 </tr>
             </tbody>
         </table>
-        <a th:href = "@{/usuarios}"> Voltar para Categorias</a>    
+        <a th:href = "@{/usuarios}"> Voltar para Usuários</a>    
     </div>
 
 
