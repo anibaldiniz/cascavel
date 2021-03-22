@@ -190,7 +190,7 @@ Array (
 
 
 
-objectclass = top peson organizationalPerson user
+objectclass = top person organizationalPerson user
 cn					  Anibal Mantovani Diniz
 displayname           Anibal Mantovani Diniz
 extensionattribute14  anibaldiniz@gmail.com

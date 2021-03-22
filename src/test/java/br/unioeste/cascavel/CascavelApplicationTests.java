@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.naming.NamingException;
 import javax.naming.directory.Attributes;
 import javax.naming.directory.DirContext;
 
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
+import org.springframework.ldap.core.AttributesMapper;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.core.support.LdapContextSource;
 
@@ -153,15 +155,26 @@ class CascavelApplicationTests {
 	}
 
 	public DirContext authenticate(String username, String password) {
-		DirContext dir =   contextSource().getContext("cn=" + username + ",ou=users," + env.getRequiredProperty("ldap.partitionSuffix"),
-				password);
+		DirContext dir = contextSource()
+				.getContext("cn=" + username + ",ou=user," + env.getRequiredProperty("ldap.partitionSuffix"), password);
 		return dir;
 	}
 
 	@Test
-	void testarBuscaUsuarioLDap(){
-		DirContext dir = authenticate("anibal.diniz", "EuSouFeliz55");
-		
+	void testarBuscaUsuarioLDap() {
+		// DirContext dir = authenticate("anibal.diniz", "EuSouFeliz55");
+		try {
+			List<String> usuarios = ldapTemplate().search("ou=user", "cn=Anibal Mantovani Diniz",
+					(AttributesMapper<String>) attrs -> (String) attrs.get("cn").get());
+
+			for (String usuario : usuarios) {
+				System.out.println(usuario);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }
