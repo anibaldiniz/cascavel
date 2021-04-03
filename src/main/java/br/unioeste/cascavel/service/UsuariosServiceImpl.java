@@ -33,7 +33,7 @@ public class UsuariosServiceImpl implements UsuariosService {
     public List<Usuario> getAllUsuarios() {
 		return usuarioRepository.findAll();
     }
-
+	
     @Override
     public void save(Usuario usuario) {
         usuarioRepository.save(usuario);

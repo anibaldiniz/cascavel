@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="utf-8">
-    <title>Gerenciamento de Solicitações</title>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-</head>
-</head>
+<head th:replace="fragments :: html_head" />
 
 <body>
 
@@ -48,12 +40,12 @@
                         <a th:href="@{/apagarSolicitacao/{id}(id=${solicitacao.id})}"
                             class="btn btn-danger btn-sm mb-3"> Excluir </a>
                     </th>
-            
+
                     <th>
-                        <a th:href="@{/statusSolicitacao/{id}(id=${solicitacao.id})}"
-                            class="btn btn-info btn-sm mb-3"> Status </a>
-                        <a th:href="@{/eventosSolicitacao/{id}(id=${solicitacao.id})}"
-                            class="btn btn-info btn-sm mb-3"> Eventos </a>
+                        <a th:href="@{/statusSolicitacao/{id}(id=${solicitacao.id})}" class="btn btn-info btn-sm mb-3">
+                            Status </a>
+                        <a th:href="@{/eventosSolicitacao/{id}(id=${solicitacao.id})}" class="btn btn-info btn-sm mb-3">
+                            Eventos </a>
                         <a th:href="@{/documentosSolicitacao/{id}(id=${solicitacao.id})}"
                             class="btn btn-info btn-sm mb-3"> Documentos </a>
                     </th>

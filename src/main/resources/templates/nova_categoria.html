@@ -1,29 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="ISO-8859-1">
-<title>Employee Management System</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	crossorigin="anonymous">
-</head>
+
+<head th:replace="fragments :: html_head" />
+
 <body>
 	<div class="container">
 		<h1>Gerenciamento de Categorias</h1>
 		<hr>
 		<h2>Incluir categoria</h2>
 
-		<form action="#" th:action="@{/incluirCategoria}" th:object="${categoria}"
-			method="POST">
-			<input type="text" th:field="*{nome}"
-				placeholder="Nome da categoria" class="form-control mb-4 col-4">
-				<button type="submit" class="btn btn-info col-2"> Incluir</button>
+		<form action="#" th:action="@{/incluirCategoria}" th:object="${categoria}" method="POST">
+			<input type="text" th:field="*{nome}" placeholder="Nome da categoria" class="form-control mb-4 col-4">
+			<button type="submit" class="btn btn-info col-2"> Incluir</button>
 		</form>
-		
+
 		<hr>
-		
-		<a th:href = "@{/categorias}"> Retorne para Lista de Categorias</a>
+
+		<a th:href="@{/categorias}"> Retorne para Lista de Categorias</a>
 	</div>
 </body>
+
 </html>
