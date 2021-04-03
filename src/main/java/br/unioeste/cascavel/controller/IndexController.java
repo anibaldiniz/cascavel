@@ -22,6 +22,11 @@ public class IndexController {
         return "login";
     }
 
+    @GetMapping("importarLdap")
+    public String getLdap() {
+        return "importarUsuariosLdap";
+    }
+
     @GetMapping("/logout")
     public String getLogoutPage(HttpServletRequest request, HttpServletResponse response){
 

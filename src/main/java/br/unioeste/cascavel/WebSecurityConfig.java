@@ -2,28 +2,20 @@ package br.unioeste.cascavel;
 
 import java.util.Arrays;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
-import org.springframework.ldap.core.LdapTemplate;
-import org.springframework.ldap.core.support.LdapContextSource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider;
 import org.springframework.security.ldap.userdetails.UserDetailsContextMapper;
 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-  @Autowired
-  private Environment env;
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
@@ -58,28 +50,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Bean
   public UserDetailsContextMapper userDetailsContextMapper() {
-    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    if (authentication != null) {
+    //Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    // if (authentication != null) {
 
-      Object principal = userDetailsService().loadUserByUsername(authentication.getName());
-    }
+    //   Object principal = userDetailsService().loadUserByUsername(authentication.getName());
+    // }
     return new CustomUserMapper();
   }
 
-  @Bean
-  public LdapContextSource contextSource() {
-    LdapContextSource contextSource = new LdapContextSource();
-    contextSource.setUrl(env.getRequiredProperty("ldap.url"));
-    contextSource.setBase(env.getRequiredProperty("ldap.partitionSuffix"));
-    contextSource.setUserDn(env.getRequiredProperty("ldap.principal"));
-    contextSource.setPassword(env.getRequiredProperty("ldap.password"));
-    return contextSource;
-  }
-
-  @Bean
-  public LdapTemplate ldapTemplate() {
-    return new LdapTemplate(contextSource());
-  }
+  
+ 
 
   
 }

@@ -264,8 +264,9 @@ public class CustomUserMapper extends LdapUserDetailsMapper {
             // colocar nos eventos ocorridos
             usuario.setUltimoLogin(LocalDateTime.now());
             usuarioService.save(usuario);
+            
             // buscar usuario do banco para poder relacionar
-            usuario = usuarioService.getUsuarioByName(username);
+            //usuario = usuarioService.getUsuarioByName(username);
 
             /*
              * categorias tirado das listas abaixo: Lista de Emails-Academico-Doutorado-CCsc
