@@ -23,24 +23,27 @@ import br.unioeste.cascavel.service.UsuariosService;
 
 @Controller
 public class UsuarioController {
-    
+
     @Autowired
     private UsuariosService usuarioService;
 
-
     @GetMapping("/usuariosTodos")
-    public String viewHomePage(Model model){
+    public String viewHomePage(Model model) {
         model.addAttribute("ListaUsuarios", usuarioService.getAllUsuarios());
         return "usuariosTodos";
     }
+
     @RequestMapping("/usuarioNome")
-    public String alterar(@RequestParam(value = "nome", required = true) String nome, Model model) {
-        List<Usuario> usuarios = usuarioService.getUsuarioByNameLike(nome.toLowerCase().trim());
-        model.addAttribute("ListaUsuarios", usuarios);
-        return "usuariosPesquisa";  
+    public String alterar(@RequestParam(value = "nome", required = false) String nome, Model model) {
+        if (nome != null) {
+            List<Usuario> usuarios = usuarioService.getUsuarioByNameLike(nome.toLowerCase().trim());
+            model.addAttribute("ListaUsuarios", usuarios);
+        }
+        return "usuariosPesquisa";
     }
+
     @GetMapping("/formIncluirUsuario")
-    public String formIncluirUsuario(Model model){
+    public String formIncluirUsuario(Model model) {
         Usuario usuario = new Usuario();
         model.addAttribute("usuario", usuario);
         return "novo_usuario";
@@ -49,62 +52,53 @@ public class UsuarioController {
     @PostMapping("/incluirUsuario")
     public String incluir(@ModelAttribute("usuario") Usuario usuario) {
         usuarioService.save(usuario);
-        return "redirect:/usuarios";  
+        return "redirect:/usuarios";
     }
+
     @GetMapping("/formAlterarUsuario/{id}")
-    public String alterar(@PathVariable (value = "id") long id, Model model) {
+    public String alterar(@PathVariable(value = "id") long id, Model model) {
         Usuario usuario = usuarioService.getUsuarioById(id);
         model.addAttribute("usuario", usuario);
-        return "alterar_usuario";  
+        return "alterar_usuario";
     }
 
     @GetMapping("/apagarUsuario/{id}")
-    public String apagar(@PathVariable (value = "id") long id, Model model) {
+    public String apagar(@PathVariable(value = "id") long id, Model model) {
         this.usuarioService.apagarUsuarioById(id);
-        return "redirect:/usuarios";  
+        return "redirect:/usuarios";
     }
 
     @GetMapping("/emailsUsuario/{id}")
-    public String visualizeEmails(@PathVariable (value = "id") long id, Model model){
+    public String visualizeEmails(@PathVariable(value = "id") long id, Model model) {
         model.addAttribute("ListaEmails", usuarioService.getUsuarioById(id).getEmails());
         model.addAttribute("usuario", usuarioService.getUsuarioById(id));
         return "usuarios_emails";
     }
 
     @GetMapping("/telefonesUsuario/{id}")
-    public String visualizeTelefones(@PathVariable (value = "id") long id, Model model){
+    public String visualizeTelefones(@PathVariable(value = "id") long id, Model model) {
         model.addAttribute("ListaTelefones", usuarioService.getUsuarioById(id).getTelefones());
         model.addAttribute("usuario", usuarioService.getUsuarioById(id));
         return "telefones_usuarios";
     }
+
     @GetMapping("/categoriasUsuario/{id}")
-    public String visualizeCategorias(@PathVariable (value = "id") long id, Model model){
+    public String visualizeCategorias(@PathVariable(value = "id") long id, Model model) {
         model.addAttribute("ListaCategorias", usuarioService.getUsuarioById(id).getCategorias());
         model.addAttribute("usuario", usuarioService.getUsuarioById(id));
         return "categorias_usuarios";
     }
+
     @GetMapping("/gruposUsuario/{id}")
-    public String visualizeGrposDoUsuario(@PathVariable (value = "id") long id, Model model){
+    public String visualizeGrposDoUsuario(@PathVariable(value = "id") long id, Model model) {
         model.addAttribute("ListaGrupos", usuarioService.getUsuarioById(id).getGrupos());
         model.addAttribute("usuario_nome", usuarioService.getUsuarioById(id).getNome());
         return "usuarios_grupo";
     }
 
-    // @GetMapping("/importarUsuariosLdap")
-    // public String geNovosUsuariosLdap(Model model) {
-    //     Boolean resultado = usuarioService.importarUsuariosLdap();
-    //     if (resultado) {
-    //         model.addAttribute("resultado", "Importados!");
-    //     } else {
-    //         model.addAttribute("resultado", "Erro durante a Importação!!!");
-    //     }
-    //     return "importarUsuariosLdap";
-    // }
-
-    
     @RequestMapping(value = "/listUsuarios", method = RequestMethod.GET)
-    public String listUsuarios(Model model, @RequestParam("page") Optional<Integer> page, 
-      @RequestParam("size") Optional<Integer> size) {
+    public String listUsuarios(Model model, @RequestParam("page") Optional<Integer> page,
+            @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(10);
 
@@ -114,9 +108,7 @@ public class UsuarioController {
 
         int totalPages = usuarioPage.getTotalPages();
         if (totalPages > 0) {
-            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
-                .boxed()
-                .collect(Collectors.toList());
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
             model.addAttribute("pageNumbers", pageNumbers);
         }
 
