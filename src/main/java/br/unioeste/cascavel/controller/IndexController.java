@@ -22,6 +22,14 @@ public class IndexController {
         return "login";
     }
 
+    @GetMapping("/teste_movel_login")
+    public String getTesteLogin() {
+        System.out.println("passou no indexController");
+        return "";
+    }
+
+
+
     @GetMapping("importarLdap")
     public String getLdap() {
         return "importarUsuariosLdap";

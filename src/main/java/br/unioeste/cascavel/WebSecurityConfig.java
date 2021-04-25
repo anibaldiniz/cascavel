@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider;
 import org.springframework.security.ldap.userdetails.UserDetailsContextMapper;
 
+
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -20,10 +21,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
-        // .antMatchers("/swagger-ui.html","/v2/api-docs", "/").permitAll()
+        //.antMatchers("/swagger-ui.html","/v2/api-docs", "/")
         .anyRequest()// .permitAll();
-        .authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()
-        .logoutSuccessUrl("/login.html").permitAll();
+        .authenticated();//.and().formLogin().loginPage("/login").permitAll().and().logout()
+        //.logoutSuccessUrl("/login.html").permitAll();
 
   }
 
@@ -55,6 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     //   Object principal = userDetailsService().loadUserByUsername(authentication.getName());
     // }
+    System.out.println("tentou autenticar.... pelo móvel");
     return new CustomUserMapper();
   }
 
