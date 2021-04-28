@@ -7,10 +7,10 @@
 		<version>2.4.2</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+	<!-- <packaging>war</packaging> -->
 	<groupId>br.unioeste</groupId>
 	<artifactId>cascavel</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<!--> <packaging>war</packaging> -->
 	<name>cascavel</name>
 	<description>Rest para App que dará suporte ao campus de Cascavel</description>
 	<properties>
@@ -119,11 +119,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
@@ -180,6 +175,11 @@
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-data-rest</artifactId>
 			<version>3.0.0</version>
+		</dependency>
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
 		</dependency>
 
 	</dependencies>
